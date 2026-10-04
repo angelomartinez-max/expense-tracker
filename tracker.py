@@ -1,6 +1,6 @@
-# Project: Expense Tracker - Installment 2
+# Project: Expense Tracker - Installment 3
 # Author: Steven Angelo G. Martinez
-# Prints the landing page and a summary of two expenses.
+# Prints the landing page, logs two expenses, and computes tax and budget.
 
 print("=" * 40)
 print("\tEXPENSE TRACKER")
@@ -16,20 +16,36 @@ print("\t[4] Exit\t\t(coming soon)")
 name = input("\nWhat's your name? ")
 print(f"Welcome, {name}! Let's log two expenses.")
 
+subtotal = 0
+
 item1 = input("First expense? ")
 amount1 = float(input("Amount? "))
+subtotal += amount1
+
 item2 = input("Second expense? ")
 amount2 = float(input("Amount? "))
+subtotal += amount2
 
-total = amount1 + amount2
-average = total / 2
+average = subtotal / 2
+
+tax_percent = float(input("Tax rate %? "))
+tax = subtotal * tax_percent / 100
+total = subtotal + tax
+
+budget = float(input("Your budget? "))
+over_budget = total > budget
+left = budget - total
 
 print()
 print("-" * 40)
 print("SUMMARY")
 print(f"\t- {item1}:\t${amount1}")
 print(f"\t- {item2}:\t${amount2}")
-print(f"Total spent:\t\t${total}")
+print(f"Subtotal:\t\t${subtotal}")
 print(f"Average:\t\t${average}")
+print(f"Tax ({tax_percent}%):\t\t${tax}")
+print(f"Grand total:\t\t${total}")
+print(f"Over budget?\t\t{over_budget}")
+print(f"Left in budget:\t\t${left}")
 print("-" * 40)
-print("Made by: Steven Angelo G. Martinez | Installment 2")
+print("Made by: Steven Angelo G. Martinez | Installment 3")
